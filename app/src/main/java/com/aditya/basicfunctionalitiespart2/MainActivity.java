@@ -78,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "First Clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.second:
+                fragmentClass = SecondFragment.class;
                 Toast.makeText(this, "Second Clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.third:
+                fragmentClass = ThirdFragment.class;
                 Toast.makeText(this, "Third Clicked", Toast.LENGTH_SHORT).show();
                 break;
             default:

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Fragments.FirstFragment">
+    <com.hendraanggrian.appcompat.widget.SocialEditText
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="#hashtag and @mention."
+        android:textSize="20sp"
+        app:socialFlags="hashtag|mention"
+        app:hashtagColor="@android:color/holo_blue_dark"
+        app:mentionColor="@android:color/holo_red_dark"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        app:counterOverflowTextAppearance="@style/TextLimitError">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.borjabravo.readmoretextview.ReadMoreTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/readmore"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        app:trimLength="114"
+        app:trimCollapsedText="@string/show_all_content"
+        android:layout_marginTop="290dp"
+        android:gravity="center_horizontal"/>
+</RelativeLayout>

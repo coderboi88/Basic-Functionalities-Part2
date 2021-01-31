@@ -13,10 +13,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.aditya.basicfunctionalitiespart2.Fragments.FirstFragment;
+import com.aditya.basicfunctionalitiespart2.Fragments.SecondFragment;
+import com.aditya.basicfunctionalitiespart2.Fragments.ThirdFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;

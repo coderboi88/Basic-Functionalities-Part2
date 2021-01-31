@@ -5,13 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.app.WallpaperManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +40,23 @@ public class MainActivity extends AppCompatActivity {
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         nvView = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(nvView);
+
+        WallpaperManager manager = (WallpaperManager) getSystemService(WALLPAPER_SERVICE);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.aditya);
+
+        try{
+            manager.setBitmap(bitmap);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                //Fot r Lock Screen
+                manager.setBitmap(bitmap,null,true,WallpaperManager.FLAG_LOCK);
+
+                //For Home Screen
+                manager.setBitmap(bitmap,null,true,WallpaperManager.FLAG_SYSTEM);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setupDrawerContent(NavigationView nvView) {
@@ -45,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupMenu(MenuItem menuItem) {
+        Fragment fragment = null;
+        Class fragmentClass = null;
         switch (menuItem.getItemId()){
             case R.id.first:
+                fragmentClass = FirstFragment.class;
                 Toast.makeText(this, "First Clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.second:
@@ -55,7 +83,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.third:
                 Toast.makeText(this, "Third Clicked", Toast.LENGTH_SHORT).show();
                 break;
+            default:
+                fragmentClass = FirstFragment.class;
+                break;
         }
+
+        try{
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent,fragment).commit();
 
         menuItem.setChecked(true);
         // Set action bar title

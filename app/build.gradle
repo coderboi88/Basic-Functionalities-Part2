@@ -19,6 +19,14 @@ android {
     }
 }
 
+repositories {
+    maven {
+        jcenter()
+        url "https://jitpack.io"
+    }
+}
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -27,6 +35,8 @@ dependencies {
     implementation 'com.hendraanggrian.appcompat:socialview:0.3-rc1'
     implementation 'com.hendraanggrian.appcompat:socialview-commons:0.3-rc1'
     implementation 'com.borjabravo:readmoretextview:2.1.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.varunest:sparkbutton:1.0.6'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

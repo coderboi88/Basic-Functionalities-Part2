@@ -13,12 +13,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aditya.basicfunctionalitiespart2.Fragments.BarChartFragment;
 import com.aditya.basicfunctionalitiespart2.Fragments.FirstFragment;
+import com.aditya.basicfunctionalitiespart2.Fragments.PieChartFragment;
+import com.aditya.basicfunctionalitiespart2.Fragments.RadarChartFragment;
 import com.aditya.basicfunctionalitiespart2.Fragments.SecondFragment;
 import com.aditya.basicfunctionalitiespart2.Fragments.ThirdFragment;
+import com.github.mikephil.charting.data.RadarData;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
@@ -28,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvView;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +50,14 @@ public class MainActivity extends AppCompatActivity {
         nvView = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(nvView);
 
-        WallpaperManager manager = (WallpaperManager) getSystemService(WALLPAPER_SERVICE);
+        textView = findViewById(R.id.saveConfig);
+        if(savedInstanceState!=null){
+            if(savedInstanceState.getString("value")!=null){
+                textView.setText(savedInstanceState.getString("value"));
+            }
+        }
+
+        /*WallpaperManager manager = (WallpaperManager) getSystemService(WALLPAPER_SERVICE);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.aditya);
 
         try{
@@ -58,7 +72,13 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putString("value",textView.getText().toString());
     }
 
     private void setupDrawerContent(NavigationView nvView) {
@@ -87,6 +107,16 @@ public class MainActivity extends AppCompatActivity {
                 fragmentClass = ThirdFragment.class;
                 Toast.makeText(this, "Third Clicked", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.first_sub:
+                fragmentClass = BarChartFragment.class;
+                break;
+            case R.id.second_sub:
+                fragmentClass = PieChartFragment.class;
+                break;
+            case R.id.third_sub:
+                fragmentClass = RadarChartFragment.class;
+                break;
+
             default:
                 fragmentClass = FirstFragment.class;
                 break;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,7 +17,6 @@
         android:layout_marginRight="10dp">
     </TextView>
 
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,5 +28,27 @@
         android:layout_marginRight="10dp"
         android:textSize="20sp">
     </Button>
+
+    <Button
+        android:id="@+id/share"
+        android:text="SHARE"
+        android:layout_below="@+id/picktime"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/spark_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/share"
+        android:layout_marginLeft="20dp"
+        app:sparkbutton_activeImage="@drawable/on"
+        app:sparkbutton_iconSize="70dp"
+        app:sparkbutton_inActiveImage="@drawable/off"
+        app:sparkbutton_primaryColor="@color/on"
+        app:sparkbutton_secondaryColor="@color/off"/>
 
 </RelativeLayout>

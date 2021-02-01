@@ -8,11 +8,11 @@
         <item
             android:id="@+id/second"
             android:icon="@drawable/ic_two"
-            android:title="Second"/>
+            android:title="Time Picker"/>
         <item
             android:id="@+id/third"
             android:icon="@drawable/ic_three"
-            android:title="Third"/>
+            android:title="Date Picker"/>
     </group>
 
     <item android:title="Sub Title">
@@ -21,11 +21,15 @@
                 <item
                     android:id="@+id/first_sub"
                     android:icon="@drawable/ic_one"
-                    android:title="First"/>
+                    android:title="Bar Chart"/>
                 <item
                     android:id="@+id/second_sub"
                     android:icon="@drawable/ic_two"
-                    android:title="Second"/>
+                    android:title="Pie Chart"/>
+                <item
+                    android:id="@+id/third_sub"
+                    android:icon="@drawable/ic_three"
+                    android:title="Radar Chart"/>
             </group>
         </menu>
     </item>

@@ -1,6 +1,7 @@
 package com.aditya.basicfunctionalitiespart2.Fragments;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -31,7 +32,7 @@ import java.util.TimeZone;
 public class SecondFragment extends Fragment {
 
     private TextView timeTextView;
-    private Button pickTime;
+    private Button pickTime,share;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,6 +84,7 @@ public class SecondFragment extends Fragment {
 
         timeTextView = (TextView) view.findViewById(R.id.timetextview);
         pickTime = (Button) view.findViewById(R.id.picktime);
+        share = (Button) view.findViewById(R.id.share);
 
         pickTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +106,19 @@ public class SecondFragment extends Fragment {
                     }
                 },hours ,mins,false);
                 timePickerDialog.show();
+            }
+        });
+
+        //To Share Data In Other App
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = timeTextView.getText().toString();
+                Intent send = new Intent();
+                send.setAction(Intent.ACTION_SEND);
+                send.putExtra(Intent.EXTRA_TEXT,message);
+                send.setType("text/plain");
+                startActivity(send);
             }
         });
 
